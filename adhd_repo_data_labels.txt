@@ -1,0 +1,47 @@
+# Variable		# Definition
+
+adhd			1=ADHD group, 0=Control group
+age			Age bin; 1=18-24 years, 2=25-30 years, 3=31-36 years, 4=37-46 years
+female			1=female, 0=male
+meanAltruans		Proportion altruistic chocies (main dependent variable for altruistic behavior)
+meanmoralAccept		Proportion utilitarian choices (main dependent variable for moral judgments)
+GmeanRiskans		Proportion risky choices (i.e., where the lottery was chosen over the safe amount) in the gain domain (main dependent variable for risk taking in the gain domain).
+LmeanRiskans		Proportion risky choices (i.e., where the lottery was chosen over the safe amount) in the loss domain (main dependent variable for risk taking in the loss domain)
+meanDiscSoon		Proportion impatient choices (main dependent variable for intertemporal choices)
+CRT_nCorr		The number of correct responses on the Cognitive Reflection Test
+risk_g_35_risky		Trial for risk taking in the gain domain; 1=chose the lottery (50/50 chance to gain 100 SEK), 0=chose certain gain of 35 SEK
+risk_g_40_risky		Trial for risk taking in the gain domain; 1=chose the lottery (50/50 chance to gain 100 SEK), 0=chose certain gain of 40 SEK
+risk_g_45_risky		Trial for risk taking in the gain domain; 1=chose the lottery (50/50 chance to gain 100 SEK), 0=chose certain gain of 45 SEK
+risk_g_50_risky		Trial for risk taking in the gain domain; 1=chose the lottery (50/50 chance to gain 100 SEK), 0=chose certain gain of 50 SEK
+risk_l_35_risky		Trial for risk taking in the loss domain; 1=chose the lottery (50/50 chance to lose 100 SEK), 0=chose certain loss of 35 SEK
+risk_l_40_risky		Trial for risk taking in the loss domain; 1=chose the lottery (50/50 chance to lose 100 SEK), 0=chose certain loss of 40 SEK
+risk_l_45_risky		Trial for risk taking in the loss domain; 1=chose the lottery (50/50 chance to lose 100 SEK), 0=chose certain loss of 45 SEK
+risk_l_50_risky		Trial for risk taking in the loss domain; 1=chose the lottery (50/50 chance to lose 100 SEK), 0=chose certain loss of 50 SEK
+dikt_bris_altru		Trial for altruistic behavior; 1=donated show-up fee to BRIS, 0=did not donate the show-up fee
+dikt_wwf_altru		Trial for altruistic behavior; 1=donated show-up fee to WWF, 0=did not donate the show-up fee
+dikt_lug_altru		Trial for altruistic behavior; 1=donated show-up fee to Doctors w/o borders, 0=did not donate the show-up fee
+dikt_hlf_altru		Trial for altruistic behavior; 1=donated show-up fee to Heart-Lung Foundation, 0=did not donate the show-up fee
+moral_t_accept		Trial for moral judgment, standard trolley dilemma; 1=it is morally right to hit the switch (utilitarian choice), 0=it is not morally right
+moral_f_accept		Trial for moral judgment, footbridge dilemma; 1=it is morally right to push the stranger onto the tracks (utilitarian choice), 0=it is not morally right
+moral_l_accept		Trial for moral judgment, lifeboat dilemma; 1=it is morally right to throw the injured person overboard (utilitarian choice), 0=it is not morally right
+moral_d_accept		Trial for moral judgment, deadly fumes dilemma; 1=it is morally right to hit the switch (utilitarian choice), 0=it is not morally right
+moral_c_accept		Trial for moral judgment, crying baby dilemma; 1=it is morally right to smother the child (utilitarian choice), 0=it is not morally right
+disc_0_1_soon		Trial for intertemporal choice; 1=chose the smaller-sooner reward (100 SEK today), 0=chose the larger-later reward (110 SEK tomorrow)
+disc_0_5_soon		Trial for intertemporal choice; 1=chose the smaller-sooner reward (100 SEK today), 0=chose the larger-later reward (110 SEK in 5 days)
+disc_1_2_soon		Trial for intertemporal choice; 1=chose the smaller-sooner reward (100 SEK tomorrow), 0=chose the larger-later reward (110 SEK in 2 days)
+disc_1_5_soon		Trial for intertemporal choice; 1=chose the smaller-sooner reward (100 SEK tomorrow), 0=chose the larger-later reward (110 SEK in 5 days)
+disc_10_11_soon		Trial for intertemporal choice; 1=chose the smaller-sooner reward (100 SEK in 10 days), 0=chose the larger-later reward (110 SEK in 11 days)
+disc_10_15_soon		Trial for intertemporal choice; 1=chose the smaller-sooner reward (100 SEK in 10 days), 0=chose the larger-later reward (110 SEK in 15 days)
+disc_20_21_soon		Trial for intertemporal choice; 1=chose the smaller-sooner reward (100 SEK in 20 days), 0=chose the larger-later reward (110 SEK in 21 days)
+disc_20_25_soon		Trial for intertemporal choice; 1=chose the smaller-sooner reward (100 SEK in 20 days), 0=chose the larger-later reward (110 SEK in 25 days)
+crt1_corr		CRT question #1 (bat and ball); 1=correct answer, 0=not correct answer
+crt2_corr		CRT question #2 (widgets); 1=correct answer, 0=not correct answer
+crt3_corr		CRT question #3 (lily pads); 1=correct answer, 0=not correct answer
+jellybean		Jellybean task; 1=draw from large bowl, 2=draw from small bowl
+riskGnans		Number of trials (0-4) that the subject completed on the risk block for gains
+riskLnans		Number of trials (0-4) that the subject completed on the risk block for losses
+diktnans		Number of trials (0-4) that the subject completed on the altruism block
+discnans		Number of trials (0-8) that the subject completed on the intertemporal choice block
+moralnans		Number of trials (0-5) that the subject completed on the moral judgment block
+
+
