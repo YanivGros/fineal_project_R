@@ -1,63 +1,58 @@
 install.packages('dplyr')
 install.packages('ggplot2')
+install.packages("effsize")
 library(dplyr)
 library(ggplot2)
+library(effsize)
 
 
 ##################
 # Data cleaning  #
 ##################
-
-data$diff_bt_risk_gain <- data$GmeanRiskans - data$LmeanRiskans
-t.test(x = data[data$adhd == 1, "diff_bt_risk_gain"],
-y = data[data$adhd == 0, "diff_bt_risk_gain"],
-alternative = "two.sided",
-paired = F,
-var.equal = T)
-colnames(data)
-t.test(x = data[data$adhd == 1, "diff_bt_risk_gain"],
-y = data[data$adhd == 0, "diff_bt_risk_gain"],
-alternative = "two.sided",
-paired = F,
-var.equal = T)
-
-
-data <- data %>%
-  mutate(age_1 = ifelse(age == 1, 1, 0)) %>%
-  mutate(age_2 = ifelse(age == 2, 1, 0)) %>%
-  mutate(age_3 = ifelse(age == 3, 1, 0)) %>%
-  mutate(age_4 = ifelse(age == 4, 1, 0)) %>%
-  mutate(adhd = as.factor(adhd)) %>%
-  select(-age)
-
-# data %>% count(adhd)
+data %>% count(adhd)
 
 data <- read.csv("adhd_repo_data.csv")
 data <- data %>%
-  select(adhd, starts_with("risk"))%>%
-  na.omit()
+  select(adhd, starts_with("risk")) %>%
+  mutate("adhd" = as.factor(adhd))
 
-data %>% count(adhd)
 
-data$mean_risk_gain <- rowMeans(select(data, starts_with("risk_g")))
-data$mean_risk_loss <- rowMeans(select(data, starts_with("risk_l")))
-data$diff_bt_risk_gain <- data$mean_risk_gain - data$mean_risk_loss
-p <- ggplot(data, mapping = aes(x = adhd, y = diff_bt_risk_gain))
+
+
+
+data$mean_risk_gain <- rowMeans(select(data, starts_with("risk_g")), na.rm = T)
+data$mean_risk_loss <- rowMeans(select(data, starts_with("risk_l")), na.rm = T)
+data$diff_risk_gain_loss <- data$mean_risk_gain - data$mean_risk_loss
+mean_control <- mean(data[data$adhd == 1,"diff_risk_gain_loss"])
+mean_test <- mean(data[data$adhd == 0,"diff_risk_gain_loss"],na.rm = T)
+n1 <- 120
+n2 <- 50
+s1 <- var(data[data$adhd == 1,"diff_risk_gain_loss"])
+s2 <- var(data[data$adhd == 0,"diff_risk_gain_loss"])
+s_p_squre <- ((n1-1)*s1 + (n2-1) * s2 ) / (n1 + n2 - 2)
+s_p <- sqrt(s_p_squre)
+t_r <-  (mean_control - mean_test) / (s_p * sqrt( 1 /n1 + 1/ n2))
+is.nan(data$mean_risk_loss)
+res <- data[is.nan(data$mean_risk_loss),]
+p <- ggplot(data, mapping = aes(x = adhd, y = diff_risk_gain_loss))
 p +
-geom_violin(draw_quantiles = 0.5) +
-geom_jitter(alpha = .15) +
-labs(y = "difference between gain and lost domain", title = "Box plot of IQ of Combined and Regular class")
-t.test(x = data[data$adhd == 1, "diff_bt_risk_gain"],
-y = data[data$adhd == 0, "diff_bt_risk_gain"],
-alternative = "two.sided",
-paired = F,
-var.equal = T)
+  geom_violin(draw_quantiles = 0.5) +
+  geom_jitter(alpha = .15) +
+  labs(y = "difference between gain and lost domain", title = "Box plot of IQ of Combined and Regular class")
+t.test(x = data[data$adhd == 1, "diff_risk_gain_loss"],
+       y = data[data$adhd == 0, "diff_risk_gain_loss"],
+       alternative = "two.sided",
+       paired = F,
+       var.equal = T,
+        )
+data <- na.omit(data)
 
+cohen.d(data$diff_risk_gain_loss,data$adhd,within = F,na.rm = T)
 
 sum(data$mean_risk_gain - data$mean_risk_loss)
 data %>%
-group_by(adhd) %>%
-summarise(Total = mean(mean_risk_gain))
+  group_by(adhd) %>%
+  summarise(Total = mean(mean_risk_gain))
 
 group_by(data, adhd)
 col_to_sum <- data %>% select(starts_with("risk_g"))
@@ -72,14 +67,14 @@ data %>% summarise(Freq = sum(starts_with("risk_g")))
 # TODO: effect size, mann witney, boot strap. 
 
 t.test(x = data[data$adhd == 1, "Flexibility"],
-y = data[data$Group == "Swimmer" & data$Side == "Left", "Flexibility"],
-alternative = "two.sided",
-paired = F)
+       y = data[data$Group == "Swimmer" & data$Side == "Left", "Flexibility"],
+       alternative = "two.sided",
+       paired = F)
 data %>%
-mutate(value = 1) %>%
-spread(age, value, fill = 0)
+  mutate(value = 1) %>%
+  spread(age, value, fill = 0)
 data %>%
-summary(data)
+  summary(data)
 sum(data$adhd == 0)
 sum(data$)
 glimpse(data)
